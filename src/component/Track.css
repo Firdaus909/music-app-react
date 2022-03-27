@@ -1,55 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+button {
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #cccccc;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+button:hover {
+    background-color: #d9d9d9;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
 .Track {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    color:#d9dadc;
 }
 .title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     font-size: 3rem;
 }
-.album {
-    border-radius: 2rem;
-    padding: 2rem;
+.track-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-wrap: nowrap;
+    overflow-x: scroll; */
+}
+
+.track-item {
+    display: flex;
     width: 25%;
-    margin: 1rem auto;
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* min-width: 25%; */
+    justify-content: center;
+    margin: 1rem 0;
+}
+.album {
+    border-radius: 1rem;
+    background-color: rgba(255,255,255,0.2);
+    width: 80%;
+    padding: 1rem 0.5rem;
+    position: relative;
 }
 .album-image {
     width: 80%;
     margin: auto;
 }
+.album-image img {
+    border-radius: 1rem;
+}
 
-.album-image img{
-    border-radius: 2rem;
-    max-width: 100%;
-    height: auto;
-}
 .album-info {
-    font-size: 1.25rem;
+    padding: 1rem;
 }
-.album-info h1{
-    color:rgb(25, 25, 25);
+.album-info h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.375rem;
+    color: #f3f3f5;
 }
 .album-info h4 {
-    color: rgb(50, 50, 50);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: 300;
+}
+.album-info button {
+    background-color: #664d33;
+    font-size: 1rem;
+    color: #d9dadc;
+    width: 80%;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.album-info button:hover {
+    background-color: #775a3c;
+    color: #cacbce;
 }
 
-.btn {
-    padding: 1vw 5vw;
-    border: 0;
-    outline: none;
-    color:rgb(0, 0, 0);
-    border-radius: 0.75vw;
-    font-size: 1.25vw;
-    background-color: rgb(200, 200, 200);
-    box-shadow: 0 1vw rgb(150, 150, 150);
-    cursor: pointer;
+@media (max-width:768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    .track-item {
+        width: 50%;
+    }
 }
-.btn:active {
-    box-shadow: 0 0.5vw rgb(100, 100, 100);
-    transform: translateY(0.5vw);
-    color: #000;
+
+@media (max-width:480px) {
+    .title {
+        font-size: 2rem;
+    }
+    .track-item {
+        width: 100%;
+    }
 }
