@@ -1,12 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import Track from './component/Track';
+import Track from './pages/track';
+import Navbar from './pages/navbar';
 
-const SPOTIFY_CLIENT_ID = process.env.REACT_APP_SPOTIFY;
+const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 
 function App() {
   return (
+    <>
+    <Navbar />
     <Track />
+    </>
   );
 }
 

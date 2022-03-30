@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TrackList = ({source, title, artist, album}) => {
+const TrackComponent = ({source, title, artist, album}) => {
   return (
     <div className="track-item">
       <div className="album">
@@ -17,4 +17,4 @@ const TrackList = ({source, title, artist, album}) => {
   )
 }
 
-export default TrackList
+export default TrackComponent

@@ -1,34 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-button {
-    padding: 0.5rem 1rem;
-    border: 0;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    background-color: #cccccc;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-button:hover {
-    background-color: #d9d9d9;
-    box-shadow: 0 0 2px rgba(0,0,0,0.2);
-}
-
 .Track {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     color:#d9dadc;
-}
-.title {
     margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 3rem;
 }
 .track-list {
     display: flex;
@@ -36,7 +10,25 @@ button:hover {
     /* flex-wrap: nowrap;
     overflow-x: scroll; */
 }
+.no-tracks {
+    margin: auto;
+}
 
+.search-form {
+    margin-bottom: 1rem;
+}
+.search-input {
+    margin-right: 0.5rem;
+}
+.search-button {
+    background-color: #53d48d;
+}
+.search-button:hover {
+    background-color: #86e0ae;
+}
+.title {
+    margin-bottom: 1rem;
+}
 .track-item {
     display: flex;
     width: 25%;
