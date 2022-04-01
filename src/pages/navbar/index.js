@@ -26,6 +26,8 @@ const SPOTIFY_AUTH_URL = `${AUTH_ENPOINT}?client_id=${CLIENT_ID}&response_type=$
 
 const Navbar = () => {
   const [token,setToken] = useState("")
+  
+  window.addEventListener("beforeunload", () => window.localStorage.clear())
 
   useEffect(() => {
       const hash = window.location.hash
@@ -50,7 +52,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
         <div className="navbar-logo">
-            <a href="/">Browntify</a>
+            <h3>Browntify</h3>
         </div>
         <div className="navbar-nav">
             {!token ? (

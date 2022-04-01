@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-import data from '../../dataAlbum/all-sample';
 import TrackComponent from '../../component/TrackComponent';
 import axios from 'axios';
 
@@ -7,7 +6,6 @@ import './style.css';
 
 const Track = () => {
   const [keyWord, setKeyWord] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
   const [tracks, setTracks] = useState([])
   const [token, setToken] = useState("")
   const [isSearch, setIsSearch] = useState(false)
@@ -26,7 +24,7 @@ const Track = () => {
     }
 
     setToken(token)
-  })
+  },[])
 
   const searchTracks = async (e) => {
     e.preventDefault();
