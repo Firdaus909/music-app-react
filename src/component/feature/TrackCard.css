@@ -1,34 +1,4 @@
-.Track {
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    color:#d9dadc;
-    margin-top: 2rem;
-}
-.track-list {
-    display: flex;
-    flex-wrap: wrap;
-    /* flex-wrap: nowrap;
-    overflow-x: scroll; */
-}
-.no-tracks {
-    margin: auto;
-}
 
-.search-form {
-    margin-bottom: 1rem;
-}
-.search-input {
-    margin-right: 0.5rem;
-}
-.search-button {
-    background-color: #53d48d;
-}
-.search-button:hover {
-    background-color: #86e0ae;
-}
-.title {
-    margin-bottom: 1rem;
-}
 .track-item {
     display: flex;
     width: 25%;
@@ -76,29 +46,19 @@
     font-weight: 300;
 }
 .album-info button {
-    background-color: #664d33;
+    --button-bg-color: #664d33;
     font-size: 1rem;
-    color: #d9dadc;
+    --button-text-color: #f5f5f5;
     width: 80%;
-}
-.album-info button:hover {
-    background-color: #775a3c;
-    color: #cacbce;
 }
 
 @media (max-width:768px) {
-    .title {
-        font-size: 2.5rem;
-    }
     .track-item {
         width: 50%;
     }
 }
 
 @media (max-width:480px) {
-    .title {
-        font-size: 2rem;
-    }
     .track-item {
         width: 100%;
     }

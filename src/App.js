@@ -1,14 +1,26 @@
 import './App.css';
-import Track from './pages/track';
-import Navbar from './pages/navbar';
+import TrackPage from './component/pages/TrackPage'
+import { TokenProvider } from './component/context/Token'
+import { TracksProvider } from './component/context/Tracks'
+import Navbar from './component/feature/Navbar';
 
 function App() {
   return (
     <>
-    <Navbar />
-    <Track />
+      <Navbar />
+      <TrackPage />
     </>
   );
 }
 
-export default App;
+const AppContainer = () => {
+  return (
+    <TokenProvider>
+      <TracksProvider>
+        <App />
+      </TracksProvider>
+    </TokenProvider>
+  )
+}
+
+export default AppContainer;

@@ -1,0 +1,11 @@
+.Track {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 2rem;
+}
+.track-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-wrap: nowrap;
+    overflow-x: scroll; */
+}
