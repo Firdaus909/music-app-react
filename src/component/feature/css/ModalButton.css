@@ -1,0 +1,17 @@
+.modal-button {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    cursor: pointer;
+}
+.modal-icon {
+    font-size: 5rem;
+    color: #1DB954;
+}
+.modal-notif {
+    position: fixed;
+    right: 2rem;
+    background-color: red;
+    padding: 0.5rem;
+    border-radius: 50%;
+}

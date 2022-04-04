@@ -1,0 +1,19 @@
+.search-form {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.search-input {
+    margin-right: 0.5rem;
+}
+.search-button {
+    --button-bg-color: #1DB954;
+    --button-text-color:#f5f5f5;
+    margin-right: 0.5rem;
+}
+.search-error {
+    color: #ff4e44;
+    position: absolute;
+    bottom: -1.25rem;
+    left: 50%;
+    transform: translateX(-70%);
+}

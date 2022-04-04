@@ -1,58 +1,55 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import TrackCard from '../feature/TrackCard'
+import ModalButton from '../feature/ModalButton'
+import PlaylistModal from './PlaylistModal'
+import UserPlaylist from '../feature/UserPlaylist'
 import SearchBar from '../feature/SearchBar'
+
 import { useTrackContext } from '../context/Tracks'
 import { useTokenContext } from '../context/Token'
-import TrackCard from '../feature/TrackCard'
 
-import './TrackPage.css'
+import './css/TrackPage.css'
+import { usePlaylistContext } from '../context/Playlist'
 
 function TrackPage() {
-  const [keyword, setKeyword] = useState("")
-  const { token } = useTokenContext()
-  const { tracks, setTracks } = useTrackContext()
-
-  const searchTracks = async (e) => {
-    e.preventDefault();
-    const { data } = await axios.get(`https://api.spotify.com/v1/search`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      params: {
-        q: keyword,
-        type: 'track',
-        limit: '10'
-      }
-    })
-
-    setTracks(data.tracks.items)
-  }
+  const [show, setShow] = useState(false)
+  const { user } = useTokenContext()
+  const { tracks } = useTrackContext()
+  const { playlist } = usePlaylistContext()
 
   return (
     <div className='Track'>
-      {token ? (
-        <div>
-          <SearchBar
-            keyword={keyword}
-            setKeyword={setKeyword}
-            searchTracks={searchTracks}
+      <PlaylistModal show={show} onClose={() => setShow(false)} />
+      <div className="greetings">
+        {user ? <h1>Welcome Back, {user.display_name}</h1> : <h2>Login to Continue</h2>}
+      </div>
+      {user && <h2 className="sub-greetings">My Playlist</h2>}
+      <div className='playlist'>
+        {playlist.map((pl) => (
+          <UserPlaylist
+            key={pl.id}
+            playlist={pl}
           />
-        </div>
-      ) : (
-        <div>You need to Log In first</div>
+        ))}
+      </div>
+      {/* {(user && show) && <h2 className="sub-greetings">Searched Tracks</h2>} */}
+      {user && (
+        <>
+          <h3 style={{fontWeight: 200, marginBottom:'1rem'}}>Looking for another Tracks?</h3>
+          <SearchBar />
+        </>
       )}
-      <div className='track-list'>
+      <div className='track-list' style={{minHeight:'50vh'}}>
         {tracks.length > 0 &&
           tracks.map((track) => (
             <TrackCard
               key={track.id}
-              source={track.album.images[0].url}
-              title={track.name}
-              artist={track.artists[0].name}
-              album={track.album.name}
-              uri={track.uri}
+              track={track}
             />
           ))}
+      </div>
+      <div onClick={() => { setShow(true) }}>
+        <ModalButton />
       </div>
     </div>
   )
