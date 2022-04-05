@@ -23,23 +23,26 @@ function TrackPage() {
       <div className="greetings">
         {user ? <h1>Welcome Back, {user.display_name}</h1> : <h2>Login to Continue</h2>}
       </div>
-      {user && <h2 className="sub-greetings">My Playlist</h2>}
-      <div className='playlist'>
-        {playlist.map((pl) => (
-          <UserPlaylist
-            key={pl.id}
-            playlist={pl}
-          />
-        ))}
-      </div>
+      {user && (
+        <>
+          <h2 className="sub-greetings">My Playlist</h2>
+          <div className='playlist'>
+            {playlist.map((pl) => (
+              <UserPlaylist
+                key={pl.id}
+                playlist={pl}
+              />
+            ))}
+          </div>
+        </>)}
       {/* {(user && show) && <h2 className="sub-greetings">Searched Tracks</h2>} */}
       {user && (
         <>
-          <h3 style={{fontWeight: 200, marginBottom:'1rem'}}>Looking for another Tracks?</h3>
+          <h3 style={{ fontWeight: 200, marginBottom: '1rem' }}>Looking for another Tracks?</h3>
           <SearchBar />
         </>
       )}
-      <div className='track-list' style={{minHeight:'50vh'}}>
+      <div className='track-list' style={{ minHeight: '50vh' }}>
         {tracks.length > 0 &&
           tracks.map((track) => (
             <TrackCard
