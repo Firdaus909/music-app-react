@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getStorage } from "./storage";
+import { getStorage } from "./localstorage";
 
 const BASE_URL = "https://api.spotify.com/v1"
 
@@ -37,7 +37,7 @@ export const trackSearch = (keyword) => {
     return createResource().get('/search', { params })
 }
 
-export const getProfile = () => {
+export const getProfile = async () => {
     return createResource().get('/me')
 }
 
@@ -56,6 +56,6 @@ export const addItems = (playlistID, uris) => {
     return createResource().post(`/playlists/${playlistID}/tracks`, uris)
 }
 
-export const getUserPlaylist = () => {
+export const getUserPlaylist = async () => {
     return createResource().get('/me/playlists')
 }
