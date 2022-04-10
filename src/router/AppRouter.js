@@ -1,45 +1,44 @@
-import React, { useEffect, useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import CreatePlaylist from '../pages/CreatePlaylist'
-import Login from '../pages/Login'
-import MyPlaylist from '../pages/MyPlaylist'
-import NotFoundPage from '../pages/NotFoundPage'
-import RedirectPage from '../pages/RedirectPage'
-import { tracksAction } from '../store/tracks-slice'
-import { userAction } from '../store/user-slice'
-import {getProfile, getUserPlaylist} from '../utils/api'
+import CreatePlaylist from '../pages/CreatePlaylist';
+import Login from '../pages/Login';
+import MyPlaylist from '../pages/MyPlaylist';
+import NotFoundPage from '../pages/NotFoundPage';
+import RedirectPage from '../pages/RedirectPage';
+import { tracksAction } from '../store/tracks-slice';
+import { userAction } from '../store/user-slice';
+import { getProfile, getUserPlaylist } from '../utils/api';
+import { getStorage } from '../utils/localstorage';
 
-const AppRouter = () => {
-  const dispatch = useDispatch()
-  const token = useSelector((state) => state.user.token)
+function AppRouter() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.user.token);
 
-  const getPlaylist = useCallback(
-    async () => {
-      const { data } = await getUserPlaylist()
-      dispatch(tracksAction.setUserPlaylist(data.items))      
-    },[dispatch])
-  
-  const getCurrentUser = useCallback(
-    async () => {
-      const { data } = await getProfile()
-      dispatch(userAction.setUser(data))
-    },[dispatch])
-  
+  const getPlaylist = useCallback(async () => {
+    const { data } = await getUserPlaylist();
+    dispatch(tracksAction.setUserPlaylist(data.items));
+  }, [dispatch]);
+
+  const getCurrentUser = useCallback(async () => {
+    const { data } = await getProfile();
+    dispatch(userAction.setUser(data));
+  }, [dispatch]);
+
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    dispatch(userAction.setToken(token))
-    
-    if(token) {
-      getCurrentUser()
-      getPlaylist()
+    const storageToken = getStorage('token');
+    dispatch(userAction.setToken(storageToken));
+
+    if (storageToken) {
+      getCurrentUser();
+      getPlaylist();
     }
-  }, [dispatch, getPlaylist, getCurrentUser])
+  }, [dispatch, getPlaylist, getCurrentUser]);
 
   return (
     <Router>
-      <div className='main'>
+      <div className="main">
         <Switch>
           <Route path="/" component={token ? MyPlaylist : Login} exact />
           <Route path="/redirect" component={RedirectPage} />
@@ -49,7 +48,7 @@ const AppRouter = () => {
         </Switch>
       </div>
     </Router>
-  )
+  );
 }
 
-export default AppRouter
+export default AppRouter;

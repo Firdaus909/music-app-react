@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
-import { getParamValues } from '../utils/functions';
+import { getParamValues } from '../utils/helper';
+import { setStorage } from '../utils/localstorage';
 
 export default class RedirectPage extends React.Component {
   componentDidMount() {
@@ -9,13 +10,15 @@ export default class RedirectPage extends React.Component {
       if (_.isEmpty(location.hash)) {
         return history.push('/myplaylist');
       }
-      const access_token = getParamValues(location.hash);
-      localStorage.setItem('token', access_token.access_token);
-      history.push('/myplaylist');
+      const accessToken = getParamValues(location.hash);
+      setStorage('token', accessToken.access_token);
+
+      return history.push('/myplaylist');
     } catch (error) {
-      history.push('/');
+      return history.push('/');
     }
   }
+
   render() {
     return null;
   }
