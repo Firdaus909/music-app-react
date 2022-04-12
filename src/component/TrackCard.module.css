@@ -1,0 +1,45 @@
+.trackcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  padding: 1rem 0.5rem;
+  position: relative;
+}
+.trackcard_header {
+  width: 80%;
+  margin: auto;
+}
+.trackcard_header img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+.trackcard_body {
+  padding: 1rem;
+  flex-grow: 1;
+  text-align: center;
+}
+.trackcard_body h2 {
+  font-size: 1.5rem;
+}
+.trackcard_body h4 {
+  font-size: 1rem;
+}
+.trackcard_footer {
+  width: 80%;
+  margin: auto;
+}
+.trackcard_btn {
+  width: 100%;
+  padding: 0.25rem 0;
+  background-color: #1db954;
+  border-radius: 0.5rem;
+  border: 1px solid #1db954;
+  color: #fff;
+}
+.trackcard_btn:hover {
+  background-color: #18a349;
+}

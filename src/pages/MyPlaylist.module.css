@@ -1,0 +1,46 @@
+.myplaylist {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  background-color: #323232;
+}
+.myplaylist_container {
+  margin: auto;
+  width: 90%;
+  min-height: 100vh;
+}
+.myplaylist_title {
+  margin: 2rem 4rem;
+  color: #fff;
+}
+.myplaylist_card_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 2rem;
+  grid-row-gap: 1rem;
+}
+.myplaylist_noplaylist {
+  color: #fff;
+  margin-left: 5rem;
+}
+.myplaylist_link {
+  color: #7ee6e0;
+  text-decoration: none;
+}
+.myplaylist_link:hover {
+  color: #61ccc7;
+}
+@media (min-width: 1025px) {
+  .myplaylist_card_wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .myplaylist_card_wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .myplaylist_card_wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

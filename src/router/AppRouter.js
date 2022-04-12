@@ -1,6 +1,11 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 
 import CreatePlaylist from '../pages/CreatePlaylist';
 import Login from '../pages/Login';
@@ -40,7 +45,10 @@ function AppRouter() {
     <Router>
       <div className="main">
         <Switch>
-          <Route path="/" component={token ? MyPlaylist : Login} exact />
+          <Route path="/" exact>
+            {token ? <Redirect to="/myplaylist" /> : <Redirect to="/login" />}
+          </Route>
+          <Route path="/login" component={Login} />
           <Route path="/redirect" component={RedirectPage} />
           <Route path="/myplaylist" component={MyPlaylist} />
           <Route path="/create" component={CreatePlaylist} />

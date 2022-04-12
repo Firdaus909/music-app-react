@@ -17,19 +17,6 @@ const createResource = () => {
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   }
 
-  // instance.interceptors.request.use(
-  //   (config) => {
-  //     const token = getStorage('token');
-
-  //     if (token) {
-  //       config.headers.Authorization = `Bearer ${token}`;
-  //     }
-
-  //     return config;
-  //   },
-  //   (err) => Promise.reject(err)
-  // );
-
   return instance;
 };
 

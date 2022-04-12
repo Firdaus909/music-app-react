@@ -13,14 +13,12 @@ const trackSlice = createSlice({
         ...state,
         tracks: action.payload,
       };
-      // state.tracks = action.payload;
     },
     setSelectedTracks(state, action) {
       return {
         ...state,
         selectedTracks: action.payload,
       };
-      // state.selectedTracks = action.payload;
     },
     setUserPlaylist(state, action) {
       return {

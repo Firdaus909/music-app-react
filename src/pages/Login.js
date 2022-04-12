@@ -1,18 +1,14 @@
 import React from 'react';
-import { Container, Button } from 'react-bootstrap';
 import { login } from '../utils/auth';
+import styles from './Login.module.css';
 
 function Login() {
   return (
-    <Container
-      fluid
-      className="bg-dark d-flex justify-content-center align-items-center"
-      style={{ minHeight: '100vh' }}
-    >
-      <Button className="btn btn-success btn-lg" onClick={login}>
+    <div className={styles.login}>
+      <button type="button" className={styles.login_button} onClick={login}>
         Login With Spotify
-      </Button>
-    </Container>
+      </button>
+    </div>
   );
 }
 

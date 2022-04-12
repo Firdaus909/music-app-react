@@ -9,6 +9,7 @@ function FormCreatePlaylist() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [errMsg, setErrMsg] = useState('Please Type Something');
+  const [isLoading, setIsLoading] = useState(false);
 
   const user = useSelector((state) => state.user.user);
   const selectedTracks = useSelector((state) => state.tracks.selectedTracks);
@@ -23,6 +24,7 @@ function FormCreatePlaylist() {
     setValidated(true);
 
     if (!errMsg) {
+      setIsLoading(true);
       const playlistData = {
         title,
         description,
@@ -36,6 +38,7 @@ function FormCreatePlaylist() {
       dispatch(tracksAction.setSelectedTracks([]));
       setTitle('');
       setDescription('');
+      setIsLoading(false);
       window.location = '/myplaylist';
     }
   };
@@ -85,7 +88,7 @@ function FormCreatePlaylist() {
       </Form.Group>
       <Form.Group className="text-center">
         <Button type="submit" className="w-50 mt-3">
-          Create Playlist
+          {isLoading ? 'Please Wait...' : 'Create Playlist'}
         </Button>
       </Form.Group>
     </Form>

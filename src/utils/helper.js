@@ -21,7 +21,5 @@ export const getParamValues = (url) => {
         [title]: value,
       };
     }, {});
-  // const parsed = url.split('&')[0].split('=');
-  // return parsed[parsed.length - 1] ?? null;
   return newUrl;
 };

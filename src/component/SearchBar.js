@@ -7,6 +7,7 @@ import { trackSearch } from '../utils/api';
 function SearchBar({ setIsSearched }) {
   const [validated, setValidated] = useState(false);
   const [keyword, setKeyword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
@@ -16,8 +17,10 @@ function SearchBar({ setIsSearched }) {
       event.stopPropagation();
     }
     if (keyword) {
+      setIsLoading(true);
       const { data } = await trackSearch(keyword);
       dispatch(tracksAction.setTracks(data.tracks.items));
+      setIsLoading(false);
       setIsSearched(true);
     }
     setValidated(true);
@@ -43,7 +46,7 @@ function SearchBar({ setIsSearched }) {
         </Form.Control.Feedback>
       </Form.Group>
       <Button className="mt-2" type="submit">
-        Search
+        {isLoading ? 'Searching...' : 'Search'}
       </Button>
     </Form>
   );
