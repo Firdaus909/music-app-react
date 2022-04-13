@@ -87,7 +87,7 @@ function FormCreatePlaylist() {
         />
       </Form.Group>
       <Form.Group className="text-center">
-        <Button type="submit" className="w-50 mt-3">
+        <Button type="submit" className="w-50 mt-3" disabled={isLoading}>
           {isLoading ? 'Please Wait...' : 'Create Playlist'}
         </Button>
       </Form.Group>

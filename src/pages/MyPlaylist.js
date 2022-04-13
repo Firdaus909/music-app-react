@@ -13,22 +13,26 @@ function MyPlaylist() {
     <div className={styles.myplaylist}>
       <NavbarComponent />
       <div className={styles.myplaylist_container}>
-        <h1 className={styles.myplaylist_title}>
-          {user && `${user.display_name}'s Playlist`}
-        </h1>
-        {playlist.length > 0 ? (
-          <div className={styles.myplaylist_card_wrapper}>
-            {playlist.map((pl) => (
-              <MyPlaylistCard key={pl.id} playlist={pl} />
-            ))}
-          </div>
-        ) : (
-          <div className={styles.myplaylist_noplaylist}>
-            You have no saved tracks.{' '}
-            <Link className={styles.myplaylist_link} to="/create">
-              Create One
-            </Link>
-          </div>
+        {user && (
+          <>
+            <h1
+              className={styles.myplaylist_title}
+            >{`${user.display_name}'s Playlist`}</h1>
+            {playlist.length > 0 ? (
+              <div className={styles.myplaylist_card_wrapper}>
+                {playlist.map((pl) => (
+                  <MyPlaylistCard key={pl.id} playlist={pl} />
+                ))}
+              </div>
+            ) : (
+              <div className={styles.myplaylist_noplaylist}>
+                You have no saved tracks.{' '}
+                <Link className={styles.myplaylist_link} to="/create">
+                  Create One
+                </Link>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

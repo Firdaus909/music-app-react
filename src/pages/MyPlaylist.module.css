@@ -6,7 +6,7 @@
 .myplaylist_container {
   margin: auto;
   width: 90%;
-  min-height: 100vh;
+  min-height: calc(100vh - 8rem);
 }
 .myplaylist_title {
   margin: 2rem 4rem;

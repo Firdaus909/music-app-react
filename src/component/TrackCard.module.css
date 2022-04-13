@@ -4,17 +4,20 @@
   justify-content: space-between;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0.2);
-  width: 100%;
+  width: 13.5rem;
   padding: 1rem 0.5rem;
   position: relative;
 }
 .trackcard_header {
   width: 80%;
   margin: auto;
+  text-align: center;
 }
 .trackcard_header img {
-  max-width: 100%;
-  height: auto;
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  object-position: top;
   border-radius: 1rem;
 }
 .trackcard_body {
