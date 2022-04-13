@@ -25,7 +25,6 @@ const trackSlice = createSlice({
         ...state,
         userPlaylist: action.payload,
       };
-      // state.userPlaylist = action.payload;
     },
   },
 });

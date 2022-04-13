@@ -1,39 +1,35 @@
 import React from 'react';
+import { Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavbarComponent from '../component/NavbarComponent';
 import MyPlaylistCard from '../component/MyPlaylistCard';
-import styles from './MyPlaylist.module.css';
 
 function MyPlaylist() {
   const playlist = useSelector((state) => state.tracks.userPlaylist);
-  const { user } = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user.user);
 
   return (
-    <div className={styles.myplaylist}>
+    <div className="pb-3 bg-dark">
       <NavbarComponent />
-      <div className={styles.myplaylist_container}>
-        {user && (
-          <>
-            <h1
-              className={styles.myplaylist_title}
-            >{`${user.display_name}'s Playlist`}</h1>
+      <div>
+        <Container style={{ minHeight: '100vh' }}>
+          <h1 className="my-4 text-white">
+            {user && `${user.display_name}'s Playlist`}
+          </h1>
+          <Row xs={1} md={2} lg={4} className="g-3">
             {playlist.length > 0 ? (
-              <div className={styles.myplaylist_card_wrapper}>
-                {playlist.map((pl) => (
-                  <MyPlaylistCard key={pl.id} playlist={pl} />
-                ))}
-              </div>
+              playlist.map((pl) => <MyPlaylistCard key={pl.id} playlist={pl} />)
             ) : (
-              <div className={styles.myplaylist_noplaylist}>
+              <div className="text-white">
                 You have no saved tracks.{' '}
-                <Link className={styles.myplaylist_link} to="/create">
+                <Link className="text-decoration-none text-info" to="/create">
                   Create One
                 </Link>
               </div>
             )}
-          </>
-        )}
+          </Row>
+        </Container>
       </div>
     </div>
   );

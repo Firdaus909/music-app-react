@@ -1,19 +1,22 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import styles from './NotFoundPage.module.css';
 
 function NotFoundPage() {
   return (
-    <div className={styles.not_found}>
+    <Container
+      fluid
+      className="bg-dark d-flex flex-column align-items-center justify-content-center"
+      style={{ minHeight: '100vh' }}
+    >
       <img
         src="https://drive.google.com/uc?export=view&id=1egCGNjReemU-QYYm8tF5GfIib5r5LUd7"
         alt="404 Page Not Found"
-        className={styles.not_found_image}
       />
-      <Link className={styles.not_found_link} to="/">
-        Redirect to HomePage
+      <Link className="text-decoration-none link-info mt-4 fs-4" to="/">
+        Redirect to Homepage
       </Link>
-    </div>
+    </Container>
   );
 }
 
