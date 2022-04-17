@@ -6,7 +6,7 @@ function MyPlaylistCard({ playlist }) {
   return (
     <Col>
       <Card className="text-center h-100">
-        <Card.Img variant="top" src={images[0].url} />
+        <Card.Img variant="top" src={images[0]?.url} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text style={{ textAlign: 'justify' }}>{description}</Card.Text>

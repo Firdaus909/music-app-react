@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { tracksAction } from '../store/tracks-slice';
+import { useAppDispatch, useAppSelector } from '../store';
+import { trackAction } from '../store/tracks-slice';
+import { Item } from '../type/TrackType';
 
-function TrackCard({ track }) {
+interface trackProps {
+  track: Item;
+}
+
+const TrackCard: FC<trackProps> = ({ track }) => {
   const { album, name, artists, uri } = track;
-  const selectedTracks = useSelector((state) => state.tracks.selectedTracks);
-  const dispatch = useDispatch();
+  const selectedTracks = useAppSelector((state) => state.tracks.selectedTracks);
+  const dispatch = useAppDispatch();
 
   const handleSelect = () => {
-    const selected = selectedTracks.find((turi) => turi === uri);
+    const selected = selectedTracks?.find((turi) => turi === uri);
     let newSelected;
     if (!selected) {
       newSelected = [...selectedTracks, uri];
     } else {
-      newSelected = selectedTracks.filter((turi) => turi !== uri);
+      newSelected = selectedTracks?.filter((turi) => turi !== uri);
     }
-    dispatch(tracksAction.setSelectedTracks(newSelected));
+    dispatch(trackAction.setSelectedTracks(newSelected));
   };
 
-  const isSelected = selectedTracks.find((turi) => turi === uri);
+  const isSelected = selectedTracks?.find((turi) => turi === uri);
 
   return (
     <Col>
@@ -39,6 +44,6 @@ function TrackCard({ track }) {
       </Card>
     </Col>
   );
-}
+};
 
 export default TrackCard;

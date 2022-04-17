@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { tracksAction } from '../store/tracks-slice';
+import { trackAction } from '../store/tracks-slice.ts';
 import { addItems, postPlaylist } from '../utils/api';
 
 function FormCreatePlaylist() {
@@ -35,7 +35,7 @@ function FormCreatePlaylist() {
       } = await postPlaylist(userID, playlistData);
       await addItems(id, selectedTracks);
 
-      dispatch(tracksAction.setSelectedTracks([]));
+      dispatch(trackAction.setSelectedTracks([]));
       setTitle('');
       setDescription('');
       setIsLoading(false);

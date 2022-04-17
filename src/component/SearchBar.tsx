@@ -1,25 +1,44 @@
-import React, { useState } from 'react';
+import React, {
+  Dispatch,
+  FC,
+  FormEvent,
+  FormEventHandler,
+  SetStateAction,
+  useState,
+} from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { tracksAction } from '../store/tracks-slice';
-import { trackSearch } from '../utils/api';
+import { useAppDispatch } from '../store/index';
+import { trackAction } from '../store/tracks-slice';
+import searchTracks from '../utils/searchTrackApi';
 
-function SearchBar({ setIsSearched }) {
+interface searchProps {
+  setIsSearched: Dispatch<SetStateAction<boolean>>;
+}
+
+const SearchBar: FC<searchProps> = ({ setIsSearched }) => {
   const [validated, setValidated] = useState(false);
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (
+    event: FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.stopPropagation();
     }
     if (keyword) {
+      const searchParams = {
+        q: keyword,
+        limit: '10',
+        type: 'track',
+        market: 'ID',
+      };
       setIsLoading(true);
-      const { data } = await trackSearch(keyword);
-      dispatch(tracksAction.setTracks(data.tracks.items));
+      const { data } = await searchTracks(searchParams);
+      dispatch(trackAction.setTrack(data));
       setIsLoading(false);
       setIsSearched(true);
     }
@@ -45,11 +64,11 @@ function SearchBar({ setIsSearched }) {
           Please Type Something
         </Form.Control.Feedback>
       </Form.Group>
-      <Button className="mt-2" type="submit">
+      <Button className="mt-2" type="submit" disabled={isLoading}>
         {isLoading ? 'Searching...' : 'Search'}
       </Button>
     </Form>
   );
-}
+};
 
 export default SearchBar;

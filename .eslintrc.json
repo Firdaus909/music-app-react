@@ -4,22 +4,29 @@
     "es2021": true
   },
   "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:prettier/recommended",
     "airbnb",
     "prettier",
     "eslint-config-prettier"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 13,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "plugins": ["react", "react-hooks"],
   "rules": {
     "import/no-unresolved": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".tsx", ".ts"] }
+    ],
+    "import/extensions": "off",
     "prettier/prettier": [
       "error",
       {
@@ -27,10 +34,15 @@
         "singleQuote": true,
         "tabWidth": 2,
         "semi": true,
-        "endOfLine":"auto"
+        "endOfLine": "auto"
       }
     ],
-    "no-plusplus" : "off",
-    "react/prop-types":"off"
+    "no-plusplus": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/function-component-definition": [2, {
+      "namedComponents": ["function-declaration","function-expression","arrow-function"],
+      "unnamedComponents": ["function-expression","arrow-function"]
+    }]
   }
 }
