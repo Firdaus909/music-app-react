@@ -48,7 +48,6 @@ const AppRouter = () => {
       getUser();
       getUserPlaylist();
       getNewRelease();
-      console.log('Disini jalan');
     }
   }, [token, getUser, getUserPlaylist, getNewRelease]);
 
