@@ -10,18 +10,26 @@ const Home = () => (
     bgSize="cover"
     bgPos="bottom"
     alignItems="center"
-    justifyContent="space-between"
+    justifyContent={{ base: 'flex-end', md: 'space-between' }}
+    flexDir={{ base: 'column-reverse', md: 'row' }}
+    pb={4}
   >
     <Flex
       flexDir="column"
       color="white"
-      w="50%"
-      mx="5rem"
-      px="5rem"
+      w={{ base: '80%', md: '50%' }}
+      mx={{ base: '1rem', md: '5rem' }}
+      px={{ base: '1rem', md: '5rem' }}
       alignItems="center"
     >
-      <Heading mb={6}>DarkShadow Music App</Heading>
-      <Text align="justify" mb={6}>
+      <Heading
+        mb={{ base: 2, md: 6 }}
+        fontSize={{ base: '1.25rem', sm: '1.5rem' }}
+        textAlign="center"
+      >
+        DarkShadow Music App
+      </Heading>
+      <Text align="justify" mb={6} fontSize={{ base: '0.75rem', sm: '1rem' }}>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus,
         delectus vel nesciunt recusandae eveniet totam ex hic mollitia quidem
         itaque? Explicabo consectetur aperiam consequuntur beatae dolorem vitae.
@@ -37,7 +45,7 @@ const Home = () => (
         Login Now
       </Button>
     </Flex>
-    <Flex w="50%" maxH="100vh">
+    <Flex w={{ base: '100%', sm: '70%', md: '50%' }}>
       <Image src="https://drive.google.com/uc?export=view&id=1Z5U8pUU9IV-bIoTnN8czz_Eipixu2gn9" />
     </Flex>
   </Flex>

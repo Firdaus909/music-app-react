@@ -142,14 +142,16 @@ const MobileNav = ({ onOpen, toggleColorMode, user, ...rest }: MobileProps) => (
             _focus={{ boxShadow: 'none' }}
           >
             <HStack>
-              <Avatar size="sm" src={user?.images[0].url} />
+              <Avatar size="sm" src={user?.images[0]?.url} />
               <VStack
                 display={{ base: 'none', md: 'flex' }}
                 alignItems="flex-start"
                 spacing="1px"
                 ml="2"
               >
-                <Text fontSize="sm">{user?.display_name}</Text>
+                <Text fontSize="sm">
+                  {user ? user.display_name : 'No Name'}
+                </Text>
               </VStack>
               <Box display={{ base: 'none', md: 'flex' }}>
                 <FiChevronDown />

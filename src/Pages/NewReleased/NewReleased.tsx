@@ -28,11 +28,12 @@ const NewReleased = () => {
     };
     const { data } = await Services.getNewRelease(params);
     dispatch(newReleaseAction.setNewRelease(data));
-    setIsLoading(false);
   }, [dispatch]);
 
   useEffect(() => {
+    setIsLoading(true);
     getNewRelease();
+    setIsLoading(false);
   }, []);
 
   if (isLoading) {
@@ -58,9 +59,8 @@ const NewReleased = () => {
         gap={4}
       >
         {items?.map((i) => (
-          <Center>
+          <Center key={i.id}>
             <Flex
-              key={i.id}
               maxW="270px"
               w="full"
               h="full"

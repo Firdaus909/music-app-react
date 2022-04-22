@@ -25,11 +25,12 @@ const MyPlaylist = () => {
   const getUserPlaylist = useCallback(async () => {
     const { data } = await Services.getUserPlaylist();
     dispatch(userAction.setUserPlaylist(data));
-    setIsLoading(false);
   }, [dispatch]);
 
   useEffect(() => {
+    setIsLoading(true);
     getUserPlaylist();
+    setIsLoading(false);
   }, []);
 
   if (isLoading) {

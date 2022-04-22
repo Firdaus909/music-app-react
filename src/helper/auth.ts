@@ -7,7 +7,7 @@ const SCOPE = 'playlist-modify-private playlist-read-private';
 const STATE = generateRandomKey(16);
 
 export const login = () => {
-  window.location.href = `${AUTHORIZE_URL}?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&state=${STATE}`;
+  window.location.href = `${AUTHORIZE_URL}?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&state=${STATE}&show_dialog=true`;
 };
 
 export const logout = () => {

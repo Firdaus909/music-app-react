@@ -17,7 +17,7 @@ const Profile = () => {
             mx={{ base: 'auto', md: '3rem', lg: '5rem' }}
             borderRadius="full"
             boxSize="250px"
-            src={user?.images[0].url}
+            src={user?.images[0]?.url}
             fallbackSrc="https://via.placeholder.com/150"
           />
         </Box>
