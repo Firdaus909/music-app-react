@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# DarkShadow Music App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Music app created by react.ts, to make and save your favorite tracks in playlist.
 
-## Available Scripts
+# Starting the app
 
-In the project directory, you can run:
+Visit: [darkshadow.vercel.app](https://darkshadow.vercel.app)
 
-### `npm start`
+# How to use app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Click "Login Now" on the home page.
+- Click "Login With Spotify" to login using spotify authentication.
+- Redirect to search page by clickin on "Search Playlist" on the sidebar.
+- Type tracks you want to search and click "Search".
+- Click "Select" on the tracks you want (you can select several tracks), and the + button will appear.
+- Click on the + button to open the modal. In this modal, your selected tracks will appear. You can remove them by click on the trash icon button.
+- Type the name of your playlist on the textbox after "Playlist Name", and type the description too.
+- When you are sure the data is correct, click "Create Playlist" at the bottom of the modal.
+- After finish, you will be redirect to "My Playlist" page, and you can see all of your playlist.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Bonus Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- You can see the new release track and album on the "New Released" page.
+- You can see your profile image, name, country, etc in "Profile" page.
+- Form validation for search bar and create playlist form.
+- Spinner will appear when the page is still loading.
+- You can see and remove your selected tracks in the modal form.
+- The button will disabled and show loading state when the tracks you searching is still loading or when the form is still submitting.
+- Fully responsive.
