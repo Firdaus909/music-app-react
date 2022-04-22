@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_SPOTIFY_ENDPOINT;
+const BASE_URL = 'https://api.spotify.com/v1';
 
 const createInstance = () => {
   const instance = axios.create({
