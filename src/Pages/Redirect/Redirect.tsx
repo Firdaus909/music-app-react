@@ -2,20 +2,21 @@ import _ from 'lodash';
 import { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { getParamValues } from '../../helper/functions';
-import { LocalStorageWorker } from '../../helper/useLocalStorage';
 
 function Redirect() {
   const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
-    const localStorage = new LocalStorageWorker();
+    const { localStorage } = window;
     try {
       if (_.isEmpty(location.hash)) {
         return history.push('/');
       }
       const accessToken = getParamValues(location.hash);
-      localStorage.add('token', accessToken.access_token);
+      const expiryTime = new Date().getTime() + accessToken.expires_in * 1000;
+      localStorage.setItem('token', accessToken.access_token);
+      localStorage.setItem('expire_time', JSON.stringify(expiryTime));
 
       return history.push('/');
     } catch (err) {

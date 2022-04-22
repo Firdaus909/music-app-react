@@ -7,10 +7,12 @@ const NotFound = () => (
     flexDir="column"
     justifyContent="center"
     alignItems="center"
-    minH="calc(100vh - 80px)"
+    minH="100vh"
+    bg="gray.800"
   >
     <Image
-      src="https://drive.google.com/uc?export=view&id=1egCGNjReemU-QYYm8tF5GfIib5r5LUd7"
+      width="20vw"
+      src="https://drive.google.com/uc?export=view&id=1kVPzAOr8zJPeuV277GFursOVHNX6s2K6"
       alt="Not Found Page"
     />
     <Box textAlign="center" py={2} px={6}>

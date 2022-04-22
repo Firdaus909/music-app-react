@@ -3,7 +3,7 @@ import React from 'react';
 import { login } from '../../helper/auth';
 
 const Login = () => (
-  <Flex justifyContent="center" alignItems="center" h="calc(100vh - 80px)">
+  <Flex bg="gray.800" justifyContent="center" alignItems="center" h="100vh">
     <Button size="lg" onClick={login} colorScheme="green">
       Login With Spotify
     </Button>

@@ -1,17 +1,48 @@
-import { Box, Button, Flex, Grid, Heading, Icon } from '@chakra-ui/react';
-import React from 'react';
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Heading,
+  Icon,
+  Spinner,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FiMusic } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../store/hooks';
-import Login from '../Login/Login';
+import Services from '../../services/service';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { userAction } from '../../store/slice/userSlice';
 import PlaylistItem from './PlaylistItem';
 
 const MyPlaylist = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { user, userPlaylist } = useAppSelector((state) => state.user);
   const playlist = userPlaylist?.items;
+  const dispatch = useAppDispatch();
 
-  if (!user) {
-    return <Login />;
+  const getUserPlaylist = useCallback(async () => {
+    const { data } = await Services.getUserPlaylist();
+    dispatch(userAction.setUserPlaylist(data));
+    setIsLoading(false);
+  }, [dispatch]);
+
+  useEffect(() => {
+    getUserPlaylist();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <Flex minH="calc(100vh - 80px)" justifyContent="center">
+        <Spinner
+          mt={4}
+          thickness="4px"
+          color={useColorModeValue('cyan.400', 'cyan.600')}
+          size="xl"
+        />
+      </Flex>
+    );
   }
 
   return (

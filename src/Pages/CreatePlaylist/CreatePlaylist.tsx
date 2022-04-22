@@ -12,14 +12,11 @@ import { useAppSelector } from '../../store/hooks';
 import TrackItem from './TrackItem';
 import ModalForm from './Modal/ModalForm';
 import Searchbar from './Searchbar';
-import Login from '../Login/Login';
 
 const CreatePlaylist = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [error, setError] = useState<string>('');
   const [isSearched, setIsSearched] = useState<boolean>(false);
-
-  const user = useAppSelector((state) => state.user.user);
   const { track, selectedTracks } = useAppSelector((state) => state.track);
   const tracksItem = track?.tracks.items;
 
@@ -28,10 +25,6 @@ const CreatePlaylist = () => {
       onClose();
     }
   }, [selectedTracks.length, onClose]);
-
-  if (!user) {
-    return <Login />;
-  }
 
   return (
     <Flex minH="calc(100vh - 80px)" flexDir="column" alignItems="center" pb={4}>

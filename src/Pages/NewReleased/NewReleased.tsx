@@ -1,16 +1,51 @@
-import { Flex, Grid, Heading, Image, Stack, Text } from '@chakra-ui/react';
-import React from 'react';
+import {
+  Center,
+  Flex,
+  Grid,
+  Heading,
+  Image,
+  Spinner,
+  Stack,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { stringToDate } from '../../helper/functions';
-import { useAppSelector } from '../../store/hooks';
-import Login from '../Login/Login';
+import Services from '../../services/service';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { newReleaseAction } from '../../store/slice/newReleaseSlice';
 
 const NewReleased = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const newRelease = useAppSelector((state) => state.newRelease.newRelease);
-  const user = useAppSelector((state) => state.user.user);
   const items = newRelease?.albums.items;
+  const dispatch = useAppDispatch();
 
-  if (!user) {
-    return <Login />;
+  const getNewRelease = useCallback(async () => {
+    const params = {
+      country: 'ID',
+      limit: '50',
+    };
+    const { data } = await Services.getNewRelease(params);
+    dispatch(newReleaseAction.setNewRelease(data));
+    setIsLoading(false);
+  }, [dispatch]);
+
+  useEffect(() => {
+    getNewRelease();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <Flex minH="calc(100vh - 80px)" justifyContent="center">
+        <Spinner
+          mt={4}
+          thickness="4px"
+          color={useColorModeValue('cyan.400', 'cyan.600')}
+          size="xl"
+        />
+      </Flex>
+    );
   }
 
   return (
@@ -23,43 +58,50 @@ const NewReleased = () => {
         gap={4}
       >
         {items?.map((i) => (
-          <Flex
-            key={i.id}
-            maxW="270px"
-            w="full"
-            h="full"
-            bg="white"
-            _dark={{ bg: 'gray.800' }}
-            boxShadow="2xl"
-            rounded="md"
-            overflow="hidden"
-            flexDir="column"
-          >
-            <Image h="auto" w="100%" src={i.images[0].url} objectFit="cover" />
-
+          <Center>
             <Flex
+              key={i.id}
+              maxW="270px"
+              w="full"
+              h="full"
+              bg="white"
+              _dark={{ bg: 'gray.800' }}
+              boxShadow="2xl"
+              rounded="md"
+              overflow="hidden"
               flexDir="column"
-              justifyContent="space-between"
-              p={6}
-              h="100%"
             >
-              <Stack
-                wordBreak="break-word"
-                spacing={0}
-                align="center"
-                mb={5}
-                flexGrow={1}
+              <Image
+                h="auto"
+                w="100%"
+                src={i.images[0].url}
+                objectFit="cover"
+              />
+
+              <Flex
+                flexDir="column"
+                justifyContent="space-between"
+                p={6}
+                h="100%"
               >
-                <Heading fontSize="2xl" fontWeight={500} fontFamily="body">
-                  {i.name}
-                </Heading>
-                <Text color="gray.500">{i.artists[0].name}</Text>
-              </Stack>
-              <Text color="gray.500" fontSize="0.8rem">
-                Release date: {stringToDate(i.release_date)}
-              </Text>
+                <Stack
+                  wordBreak="break-word"
+                  spacing={0}
+                  align="center"
+                  mb={5}
+                  flexGrow={1}
+                >
+                  <Heading fontSize="2xl" fontWeight={500} fontFamily="body">
+                    {i.name}
+                  </Heading>
+                  <Text color="gray.500">{i.artists[0].name}</Text>
+                </Stack>
+                <Text color="gray.500" fontSize="0.8rem">
+                  Release date: {stringToDate(i.release_date)}
+                </Text>
+              </Flex>
             </Flex>
-          </Flex>
+          </Center>
         ))}
       </Grid>
     </Flex>

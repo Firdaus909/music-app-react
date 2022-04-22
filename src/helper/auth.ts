@@ -1,5 +1,4 @@
 import { generateRandomKey } from './functions';
-import { LocalStorageWorker } from './useLocalStorage';
 
 const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URL;
@@ -12,7 +11,8 @@ export const login = () => {
 };
 
 export const logout = () => {
-  const localStorage = new LocalStorageWorker();
-  localStorage.clear();
+  window.localStorage.clear();
   window.location.replace('/');
 };
+
+export const isLoggedIn = () => !!window.localStorage.getItem('token');

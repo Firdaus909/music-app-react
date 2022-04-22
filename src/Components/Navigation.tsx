@@ -19,18 +19,17 @@ import {
   FlexProps,
   Menu,
   MenuButton,
-  MenuDivider,
   MenuItem,
   MenuList,
   Button,
   useColorMode,
 } from '@chakra-ui/react';
 import {
-  FiHome,
   FiTrendingUp,
   FiCompass,
   FiMenu,
   FiMusic,
+  FiUser,
   FiChevronDown,
   FiSun,
   FiMoon,
@@ -46,10 +45,10 @@ interface LinkItemProps {
   url: string;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Dashboard', icon: FiHome, url: '/dashboard' },
   { name: 'New Released', icon: FiTrendingUp, url: '/new-released' },
   { name: 'Search Playlist', icon: FiCompass, url: '/search' },
   { name: 'My Playlist', icon: FiMusic, url: '/my-playlist' },
+  { name: 'Profile', icon: FiUser, url: '/profile' },
 ];
 
 interface NavItemProps extends FlexProps {
@@ -100,10 +99,6 @@ const NavItem = ({ icon, children, url, ...rest }: NavItemProps) => (
   </Link>
 );
 
-interface SidebarProps extends BoxProps {
-  onClose: () => void;
-}
-
 interface MobileProps extends FlexProps {
   onOpen: () => void;
   toggleColorMode: () => void;
@@ -129,16 +124,7 @@ const MobileNav = ({ onOpen, toggleColorMode, user, ...rest }: MobileProps) => (
       icon={<FiMenu />}
     />
 
-    <Text
-      display={{ base: 'flex', md: 'none' }}
-      fontSize="2xl"
-      fontFamily="monospace"
-      fontWeight="bold"
-    >
-      Logo
-    </Text>
-
-    <HStack spacing={{ base: '0', md: '6' }}>
+    <HStack spacing={{ base: '3', md: '6' }}>
       <Flex
         as={Button}
         justifyContent="center"
@@ -175,13 +161,7 @@ const MobileNav = ({ onOpen, toggleColorMode, user, ...rest }: MobileProps) => (
             borderColor={useColorModeValue('gray.200', 'gray.700')}
           >
             {user ? (
-              <>
-                <MenuItem as={NavLink} to="/profile">
-                  Profile
-                </MenuItem>
-                <MenuDivider />
-                <MenuItem onClick={logout}>Sign out</MenuItem>
-              </>
+              <MenuItem onClick={logout}>Sign out</MenuItem>
             ) : (
               <MenuItem onClick={login}>Login</MenuItem>
             )}
@@ -191,6 +171,10 @@ const MobileNav = ({ onOpen, toggleColorMode, user, ...rest }: MobileProps) => (
     </HStack>
   </Flex>
 );
+
+interface SidebarProps extends BoxProps {
+  onClose: () => void;
+}
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => (
   <Box
@@ -209,7 +193,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => (
       <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
     </Flex>
     {LinkItems.map((link) => (
-      <NavItem key={link.name} icon={link.icon} url={link.url}>
+      <NavItem
+        key={link.name}
+        icon={link.icon}
+        url={link.url}
+        onClick={onClose}
+      >
         {link.name}
       </NavItem>
     ))}
