@@ -31,9 +31,9 @@ const Home = () => (
       </Heading>
       <Text align="justify" mb={6} fontSize={{ base: '0.75rem', sm: '1rem' }}>
         Within every hidden note lies a secret waiting to consume your soul.
-        Dare to dive into the dark symphony, where harmony and tension
-        entwine in a haunting dance. Step deeper into the abyss, and let
-        the music guide your spirit through a journey shrouded in mystery.
+        Dare to dive into the dark symphony, where harmony and tension entwine
+        in a haunting dance. Step deeper into the abyss, and let the
+        music guide your spirit through a journey shrouded in mystery.
       </Text>
       <Button
         as={Link}
