@@ -6,7 +6,7 @@ const Home = () => (
   <Flex
     minH="100vh"
     pos="relative"
-    bgImage="linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.5)),url(https://drive.google.com/uc?export=view&id=14l4GZcqkcLSAJbGfU1FU3g7ho-LlsAgm)"
+    bgImage="linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.5)),url(./bg.png)"
     bgSize="cover"
     bgPos="bottom"
     alignItems="center"
@@ -46,7 +46,7 @@ const Home = () => (
       </Button>
     </Flex>
     <Flex w={{ base: '100%', sm: '70%', md: '50%' }}>
-      <Image src="https://drive.google.com/uc?export=view&id=1Z5U8pUU9IV-bIoTnN8czz_Eipixu2gn9" />
+      <Image src="./Landing Page Illustration.svg" />
     </Flex>
   </Flex>
 );
